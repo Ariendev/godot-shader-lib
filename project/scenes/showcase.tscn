@@ -1,0 +1,262 @@
+[gd_scene load_steps=17 format=3 uid="uid://dy0lmh4hdj8d4"]
+
+[ext_resource type="Shader" path="res://shaders/toonlit.gdshader" id="1_wr2g8"]
+[ext_resource type="Texture2D" uid="uid://c28rbq6555wyv" path="res://assets/textures/t_prototype.png" id="2_18h4l"]
+[ext_resource type="Texture2D" uid="uid://542nwul43vig" path="res://assets/textures/n-prototype.png" id="3_i6j6j"]
+
+[sub_resource type="Environment" id="Environment_67ksw"]
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="Animation" id="Animation_idbgf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Red/Red Pivot:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0.523599)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Green/Green Pivot:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.74846e-07, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Blue/Blue Pivot:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_txg38"]
+resource_name = "spin"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Red/Red Pivot:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 6.28319, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Green/Green Pivot:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 1.74846e-07, 0), Vector3(0, 6.28319, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Blue/Blue Pivot:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 6.28319, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wu2u6"]
+_data = {
+"RESET": SubResource("Animation_idbgf"),
+"spin": SubResource("Animation_txg38")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_witk7"]
+diffuse_mode = 2
+specular_mode = 2
+disable_ambient_light = true
+disable_fog = true
+albedo_color = Color(1, 0, 0, 1)
+emission_enabled = true
+emission = Color(1, 0, 0, 1)
+emission_energy_multiplier = 16.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_28u0o"]
+material = SubResource("StandardMaterial3D_witk7")
+radius = 0.05
+height = 0.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qt4k8"]
+diffuse_mode = 2
+specular_mode = 2
+disable_ambient_light = true
+disable_fog = true
+albedo_color = Color(0, 1, 0, 1)
+emission_enabled = true
+emission = Color(0, 1, 0, 1)
+emission_energy_multiplier = 16.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_dtk18"]
+material = SubResource("StandardMaterial3D_qt4k8")
+radius = 0.05
+height = 0.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_siwyl"]
+diffuse_mode = 2
+specular_mode = 2
+disable_ambient_light = true
+disable_fog = true
+albedo_color = Color(0, 0, 1, 1)
+emission_enabled = true
+emission = Color(0, 0, 1, 1)
+emission_energy_multiplier = 16.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_pxsd8"]
+material = SubResource("StandardMaterial3D_siwyl")
+radius = 0.05
+height = 0.1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ws6qg"]
+render_priority = 0
+shader = ExtResource("1_wr2g8")
+shader_parameter/tint = Color(0.501961, 0.501961, 0.501961, 1)
+shader_parameter/main_tex = ExtResource("2_18h4l")
+shader_parameter/normal_strength = 3.0
+shader_parameter/normal_tex = ExtResource("3_i6j6j")
+shader_parameter/tiling = Vector2(1, 1)
+shader_parameter/offset = Vector2(0, 0)
+shader_parameter/shadow_offset = 0.075
+shader_parameter/shadow_width = 2.5
+shader_parameter/shadow_color = Color(0.66, 0.66, 0.66, 1)
+shader_parameter/steps = 2
+shader_parameter/specular_enabled = true
+shader_parameter/specular_size = 0.002
+shader_parameter/specular_width = 0.01
+shader_parameter/specular_strength = 0.25
+shader_parameter/rim_enabled = true
+shader_parameter/rim_size = 0.0
+shader_parameter/rim_width = 0.01
+shader_parameter/rim_color = Color(0.25, 0.25, 0.25, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_32vd4"]
+material = SubResource("ShaderMaterial_ws6qg")
+size = Vector2(5, 5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_honk1"]
+render_priority = 0
+shader = ExtResource("1_wr2g8")
+shader_parameter/tint = Color(0.75, 0.75, 0.75, 1)
+shader_parameter/main_tex = ExtResource("2_18h4l")
+shader_parameter/normal_strength = 2.0
+shader_parameter/normal_tex = ExtResource("3_i6j6j")
+shader_parameter/tiling = Vector2(2, 1)
+shader_parameter/offset = Vector2(0, 0)
+shader_parameter/shadow_offset = 0.075
+shader_parameter/shadow_width = 2.5
+shader_parameter/shadow_color = Color(0.66, 0.66, 0.66, 1)
+shader_parameter/steps = 2
+shader_parameter/specular_enabled = true
+shader_parameter/specular_size = 0.002
+shader_parameter/specular_width = 0.01
+shader_parameter/specular_strength = 0.25
+shader_parameter/rim_enabled = false
+shader_parameter/rim_size = 0.35
+shader_parameter/rim_width = 0.01
+shader_parameter/rim_color = Color(0.329412, 0.329412, 0.329412, 1)
+
+[node name="Showcase" type="Node3D"]
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 5, 0)
+shadow_enabled = true
+shadow_blur = 0.5
+directional_shadow_mode = 0
+directional_shadow_max_distance = 20.0
+
+[node name="WE" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_67ksw")
+
+[node name="Showcase Lights" type="Node3D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Showcase Lights"]
+libraries = {
+"": SubResource("AnimationLibrary_wu2u6")
+}
+autoplay = "spin"
+
+[node name="Red" type="Node3D" parent="Showcase Lights"]
+transform = Transform3D(0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Red Pivot" type="Node3D" parent="Showcase Lights/Red"]
+transform = Transform3D(0.866025, -0.5, 0, 0.5, 0.866025, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Showcase Lights/Red/Red Pivot"]
+transform = Transform3D(0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, 0, 1, 0.467348, 1.79738, 1.95017)
+light_color = Color(1, 0, 0, 1)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Showcase Lights/Red/Red Pivot/OmniLight3D"]
+mesh = SubResource("SphereMesh_28u0o")
+
+[node name="Green" type="Node3D" parent="Showcase Lights"]
+transform = Transform3D(1, 0, 0, 0, 0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0.5, 0)
+
+[node name="Green Pivot" type="Node3D" parent="Showcase Lights/Green"]
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0, 0, 0)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Showcase Lights/Green/Green Pivot"]
+transform = Transform3D(0.866025, 0.5, 0, -0.5, 0.866026, 0, 0, 0, 1, 0.467348, 1.79738, 0.70081)
+light_color = Color(0, 1, 0, 1)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Showcase Lights/Green/Green Pivot/OmniLight3D"]
+mesh = SubResource("SphereMesh_dtk18")
+
+[node name="Blue" type="Node3D" parent="Showcase Lights"]
+transform = Transform3D(0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="Blue Pivot" type="Node3D" parent="Showcase Lights/Blue"]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Showcase Lights/Blue/Blue Pivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1, 0, 0)
+light_color = Color(0, 0, 1, 1)
+light_energy = 5.0
+omni_range = 10.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Showcase Lights/Blue/Blue Pivot/OmniLight3D"]
+mesh = SubResource("SphereMesh_pxsd8")
+
+[node name="Ground" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_32vd4")
+
+[node name="Sphere" type="CSGSphere3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+radial_segments = 32
+rings = 16
+material = SubResource("ShaderMaterial_honk1")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.707107, -0.353553, 0.612372, 0, 0.866025, 0.5, -0.707107, -0.353553, 0.612372, 2.56805, 2.95, 2.46805)
+fov = 45.0
+size = 3.479
