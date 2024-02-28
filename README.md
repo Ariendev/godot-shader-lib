@@ -1,6 +1,11 @@
 # godot-toon-lit
 Simple Toon Lit Shader for Godot
 
+What's Included in the project files:
+- Example Scene
+- Example Material
+- the shader itself
+
 Current Features:
  - Rim Lighting
  - Specular Highlights
