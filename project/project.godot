@@ -13,6 +13,7 @@ config_version=5
 config/name="Toon Lit Showcase"
 run/main_scene="res://scenes/showcase.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
+config/icon="res://icon.png"
 
 [file_customization]
 
