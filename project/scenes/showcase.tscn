@@ -1,8 +1,10 @@
-[gd_scene load_steps=17 format=3 uid="uid://dy0lmh4hdj8d4"]
+[gd_scene load_steps=19 format=3 uid="uid://dy0lmh4hdj8d4"]
 
 [ext_resource type="Shader" path="res://shaders/toonlit.gdshader" id="1_wr2g8"]
 [ext_resource type="Texture2D" uid="uid://c28rbq6555wyv" path="res://assets/textures/t_prototype.png" id="2_18h4l"]
 [ext_resource type="Texture2D" uid="uid://542nwul43vig" path="res://assets/textures/n-prototype.png" id="3_i6j6j"]
+[ext_resource type="PackedScene" uid="uid://x4y1nobnx88v" path="res://assets/meshes/suzanne.glb" id="4_n0jx7"]
+[ext_resource type="Material" uid="uid://c0128dq7one12" path="res://materials/toon.tres" id="5_eso08"]
 
 [sub_resource type="Environment" id="Environment_67ksw"]
 tonemap_mode = 2
@@ -182,17 +184,16 @@ shader_parameter/specular_enabled = true
 shader_parameter/specular_size = 0.002
 shader_parameter/specular_width = 0.01
 shader_parameter/specular_strength = 0.25
-shader_parameter/rim_enabled = false
-shader_parameter/rim_size = 0.35
+shader_parameter/rim_enabled = true
+shader_parameter/rim_size = 0.25
 shader_parameter/rim_width = 0.01
-shader_parameter/rim_color = Color(0.329412, 0.329412, 0.329412, 1)
+shader_parameter/rim_color = Color(0.66, 0.66, 0.66, 1)
 
 [node name="Showcase" type="Node3D"]
 
 [node name="Sun" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 5, 0)
 shadow_enabled = true
-shadow_blur = 0.5
 directional_shadow_mode = 0
 directional_shadow_max_distance = 20.0
 
@@ -214,7 +215,7 @@ transform = Transform3D(0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, 0, 1, 0, 0, 0)
 transform = Transform3D(0.866025, -0.5, 0, 0.5, 0.866025, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Showcase Lights/Red/Red Pivot"]
-transform = Transform3D(0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, 0, 1, 0.467348, 1.79738, 1.95017)
+transform = Transform3D(0.866026, 0.500001, 0, -0.500001, 0.866026, 0, 0, 0, 1, 0.467348, 1.98792, -0.0185009)
 light_color = Color(1, 0, 0, 1)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Showcase Lights/Red/Red Pivot/OmniLight3D"]
@@ -251,7 +252,7 @@ mesh = SubResource("SphereMesh_pxsd8")
 mesh = SubResource("PlaneMesh_32vd4")
 
 [node name="Sphere" type="CSGSphere3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.5)
 radial_segments = 32
 rings = 16
 material = SubResource("ShaderMaterial_honk1")
@@ -260,3 +261,11 @@ material = SubResource("ShaderMaterial_honk1")
 transform = Transform3D(0.707107, -0.353553, 0.612372, 0, 0.866025, 0.5, -0.707107, -0.353553, 0.612372, 2.56805, 2.95, 2.46805)
 fov = 45.0
 size = 3.479
+
+[node name="suzanne" parent="." instance=ExtResource("4_n0jx7")]
+transform = Transform3D(0.5, -0.224144, 0.836516, 0, 0.965926, 0.258819, -0.866025, -0.12941, 0.482963, 0.0828427, 0.9, 0.582843)
+
+[node name="Suzanne" parent="suzanne" index="0"]
+material_override = ExtResource("5_eso08")
+
+[editable path="suzanne"]

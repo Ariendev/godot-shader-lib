@@ -29,7 +29,8 @@ group_uniforms rim;
 uniform bool rim_enabled = true;
 uniform float rim_size : hint_range(0,1) = 0.25;
 uniform float rim_width : hint_range(0.0,0.5) = 0.01;
-uniform vec3 rim_color : source_color = vec3(0.33);
+uniform vec3 rim_color : source_color = vec3(0.66);
+
 
 void fragment() {
 	vec2 uv = UV * tiling + offset;
@@ -73,11 +74,9 @@ void light() {
 		rim *= rim_color;
 	}
 	
-	
 	// combine everything
 	vec3 stepped_light_color = LIGHT_COLOR * round(ATTENUATION * float(steps)) / float(steps);
-	vec3 final = ndl * stepped_light_color * ALBEDO + (specular + rim);
-	final = clamp(final, 0.0, 1.0);
-	
+	vec3 final = ndl * stepped_light_color * ALBEDO;
+	final = clamp(final, 0.0, 1.0) + (specular+(rim*stepped_light_color));
 	DIFFUSE_LIGHT += (final);
 }

@@ -12,15 +12,21 @@ config_version=5
 
 config/name="Toon Lit Showcase"
 run/main_scene="res://scenes/showcase.tscn"
-config/features=PackedStringArray("4.2", "Forward Plus")
+config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.png"
 
 [file_customization]
 
 folder_colors={
 "res://assets/": "green",
+"res://assets/meshes/": "red",
 "res://assets/textures/": "orange",
 "res://materials/": "teal",
 "res://scenes/": "blue",
 "res://shaders/": "purple"
 }
+
+[rendering]
+
+lights_and_shadows/directional_shadow/soft_shadow_filter_quality=0
+lights_and_shadows/positional_shadow/soft_shadow_filter_quality=0
