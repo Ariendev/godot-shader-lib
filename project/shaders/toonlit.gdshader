@@ -28,7 +28,7 @@ uniform float specular_strength : hint_range(0.0, 0.25) = 0.075;
 group_uniforms rim;
 uniform bool rim_enabled = true;
 uniform float rim_size : hint_range(0,1) = 0.25;
-uniform float rim_width : hint_range(0.0,0.5) = 0.01;
+uniform float rim_smoothness : hint_range(0.0,0.5) = 0.01;
 uniform vec3 rim_color : source_color = vec3(0.66);
 
 
@@ -69,7 +69,7 @@ void light() {
 	if (rim_enabled) {
 		float vdn = 1.-dot(VIEW, NORMAL);
 		float rim_value = vdn * ndl;
-		rim = vec3(smoothstep((1.-rim_size) - rim_width, (1.-rim_size) + rim_width, rim_value));
+		rim = vec3(smoothstep((1.-rim_size) - rim_smoothness, (1.-rim_size) + rim_smoothness, rim_value));
 		rim = round(rim * float(steps)) / float(steps);
 		rim *= rim_color;
 	}

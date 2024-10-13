@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dy0lmh4hdj8d4"]
+[gd_scene load_steps=18 format=3 uid="uid://dy0lmh4hdj8d4"]
 
 [ext_resource type="Shader" path="res://shaders/toonlit.gdshader" id="1_wr2g8"]
 [ext_resource type="Texture2D" uid="uid://c28rbq6555wyv" path="res://assets/textures/t_prototype.png" id="2_18h4l"]
@@ -8,7 +8,7 @@
 
 [sub_resource type="Environment" id="Environment_67ksw"]
 tonemap_mode = 2
-glow_enabled = true
+volumetric_fog_density = 1.0
 
 [sub_resource type="Animation" id="Animation_idbgf"]
 length = 0.001
@@ -160,34 +160,12 @@ shader_parameter/specular_width = 0.01
 shader_parameter/specular_strength = 0.25
 shader_parameter/rim_enabled = true
 shader_parameter/rim_size = 0.0
-shader_parameter/rim_width = 0.01
+shader_parameter/rim_smoothness = 0.01
 shader_parameter/rim_color = Color(0.25, 0.25, 0.25, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_32vd4"]
 material = SubResource("ShaderMaterial_ws6qg")
 size = Vector2(5, 5)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_honk1"]
-render_priority = 0
-shader = ExtResource("1_wr2g8")
-shader_parameter/tint = Color(0.75, 0.75, 0.75, 1)
-shader_parameter/main_tex = ExtResource("2_18h4l")
-shader_parameter/normal_strength = 2.0
-shader_parameter/normal_tex = ExtResource("3_i6j6j")
-shader_parameter/tiling = Vector2(2, 1)
-shader_parameter/offset = Vector2(0, 0)
-shader_parameter/shadow_offset = 0.075
-shader_parameter/shadow_width = 2.5
-shader_parameter/shadow_color = Color(0.66, 0.66, 0.66, 1)
-shader_parameter/steps = 2
-shader_parameter/specular_enabled = true
-shader_parameter/specular_size = 0.002
-shader_parameter/specular_width = 0.01
-shader_parameter/specular_strength = 0.25
-shader_parameter/rim_enabled = true
-shader_parameter/rim_size = 0.25
-shader_parameter/rim_width = 0.01
-shader_parameter/rim_color = Color(0.66, 0.66, 0.66, 1)
 
 [node name="Showcase" type="Node3D"]
 
@@ -217,6 +195,7 @@ transform = Transform3D(0.866025, -0.5, 0, 0.5, 0.866025, 0, 0, 0, 1, 0, 0, 0)
 [node name="OmniLight3D" type="OmniLight3D" parent="Showcase Lights/Red/Red Pivot"]
 transform = Transform3D(0.866026, 0.500001, 0, -0.500001, 0.866026, 0, 0, 0, 1, 0.467348, 1.98792, -0.0185009)
 light_color = Color(1, 0, 0, 1)
+light_volumetric_fog_energy = 16.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Showcase Lights/Red/Red Pivot/OmniLight3D"]
 mesh = SubResource("SphereMesh_28u0o")
@@ -230,6 +209,7 @@ transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0, 0, 0)
 [node name="OmniLight3D" type="OmniLight3D" parent="Showcase Lights/Green/Green Pivot"]
 transform = Transform3D(0.866025, 0.5, 0, -0.5, 0.866026, 0, 0, 0, 1, 0.467348, 1.79738, 0.70081)
 light_color = Color(0, 1, 0, 1)
+light_volumetric_fog_energy = 16.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Showcase Lights/Green/Green Pivot/OmniLight3D"]
 mesh = SubResource("SphereMesh_dtk18")
@@ -243,6 +223,7 @@ transform = Transform3D(0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0, 0, 1, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1, 0, 0)
 light_color = Color(0, 0, 1, 1)
 light_energy = 5.0
+light_volumetric_fog_energy = 16.0
 omni_range = 10.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Showcase Lights/Blue/Blue Pivot/OmniLight3D"]
@@ -255,7 +236,7 @@ mesh = SubResource("PlaneMesh_32vd4")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.5)
 radial_segments = 32
 rings = 16
-material = SubResource("ShaderMaterial_honk1")
+material = ExtResource("5_eso08")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(0.707107, -0.353553, 0.612372, 0, 0.866025, 0.5, -0.707107, -0.353553, 0.612372, 2.56805, 2.95, 2.46805)
