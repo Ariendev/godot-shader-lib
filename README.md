@@ -7,9 +7,9 @@ What's Included in the project files:
 - the shader itself
 
 Current Features:
- - Rim Lighting
+ - Rim Lighting (wip)
  - Specular Highlights
  - Toon Shading (obv)
- - Multiple Omni Light support
+ - Multiple Light support
 
 https://github.com/Ariendev/godot-toon-lit/assets/80583526/64f0c147-7091-4a49-8e5d-f4c89df52e12
