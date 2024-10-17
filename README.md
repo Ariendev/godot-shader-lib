@@ -4,7 +4,7 @@ Simple Toon Lit Shader for Godot
 What's Included in the project files:
 - Example Scene
 - Example Material
-- the shader itself
+- The Shader itself
 
 Current Features:
  - Rim Lighting (wip)
