@@ -2,11 +2,11 @@ shader_type spatial;
 render_mode diffuse_toon, specular_toon;
 
 group_uniforms diffuse;
-uniform sampler2D main_tex : hint_default_white, filter_nearest_mipmap;
+uniform sampler2D main_tex : hint_default_white, filter_linear_mipmap;
 uniform vec3 tint : source_color = vec3(1.0);
 
 group_uniforms normal;
-uniform sampler2D normal_tex : hint_normal, filter_nearest_mipmap;
+uniform sampler2D normal_tex : hint_normal, filter_linear_mipmap;
 uniform float normal_strength : hint_range(-15.0, 15.0, 0.1) = 1.0;
 
 group_uniforms sampling;
