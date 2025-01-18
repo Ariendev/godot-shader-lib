@@ -12,10 +12,12 @@ What's Included in the project files:
 Simple Toon Lit Shader
 
 Includes:
- - Basic Rim Lighting
- - Specular Highlights
- - Toon Shading (obv)
- - Multiple Light support
+- Basic Rim Lighting
+- Specular Highlights
+- Toon Shading (obviously)
+- Multi Light Support
+
+
 https://github.com/Ariendev/godot-toon-lit/assets/80583526/64f0c147-7091-4a49-8e5d-f4c89df52e12
 
 # Fractal Sampling
@@ -24,6 +26,8 @@ Shader function for sampling textures using "fractal UVs"
 Includes:
 - Function for copying to other shaders
 - Basic Shader Example
+
+
 https://github.com/user-attachments/assets/86197893-41ca-4558-8cf7-c0137327a539
 
 # Stylized Water Shader (WIP)
