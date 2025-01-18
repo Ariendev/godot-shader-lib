@@ -1,16 +1,16 @@
 [gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://c0128dq7one12"]
 
-[ext_resource type="Shader" path="res://shaders/toonlit.gdshader" id="1_41mss"]
+[ext_resource type="Shader" uid="uid://1x1llfcaa6wk" path="res://shaders/toonlit.gdshader" id="1_41mss"]
 [ext_resource type="Texture2D" uid="uid://c28rbq6555wyv" path="res://assets/textures/t_prototype.png" id="2_emhlh"]
 [ext_resource type="Texture2D" uid="uid://542nwul43vig" path="res://assets/textures/n-prototype.png" id="3_o67y1"]
 
 [resource]
 render_priority = 0
 shader = ExtResource("1_41mss")
-shader_parameter/tint = Color(0.75, 0.75, 0.75, 1)
 shader_parameter/main_tex = ExtResource("2_emhlh")
-shader_parameter/normal_strength = 2.0
+shader_parameter/tint = Color(0.75, 0.75, 0.75, 1)
 shader_parameter/normal_tex = ExtResource("3_o67y1")
+shader_parameter/normal_strength = 2.0
 shader_parameter/tiling = Vector2(1, 1)
 shader_parameter/offset = Vector2(0, 0)
 shader_parameter/shadow_offset = 0.075

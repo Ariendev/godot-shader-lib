@@ -46,11 +46,6 @@ void light() {
 	ndl = (ndl * shadow_width) + shadow_offset;
 	ndl = clamp(ndl, 0.0, 1.0);
 	ndl = round(ndl * float(steps)) / float(steps);
-
-	float ndla = clamp(dot(LIGHT, NORMAL), 0.0 ,1.0);
-	ndla = (ndla * shadow_width) + shadow_offset;
-	ndla = clamp(ndla, 0.0, 1.0);
-	ndla = round(ndla * float(steps)) / float(steps);
 	
 	// specular
 	vec3 specular = vec3(0.0);

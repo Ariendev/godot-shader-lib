@@ -1,10 +1,10 @@
 [gd_scene load_steps=18 format=3 uid="uid://dy0lmh4hdj8d4"]
 
-[ext_resource type="Shader" path="res://shaders/toonlit.gdshader" id="1_wr2g8"]
-[ext_resource type="Texture2D" uid="uid://c28rbq6555wyv" path="res://assets/textures/t_prototype.png" id="2_18h4l"]
-[ext_resource type="Texture2D" uid="uid://542nwul43vig" path="res://assets/textures/n-prototype.png" id="3_i6j6j"]
-[ext_resource type="PackedScene" uid="uid://x4y1nobnx88v" path="res://assets/meshes/suzanne.glb" id="4_n0jx7"]
-[ext_resource type="Material" uid="uid://c0128dq7one12" path="res://materials/toon.tres" id="5_eso08"]
+[ext_resource type="Shader" uid="uid://1x1llfcaa6wk" path="res://shaders/toonlit.gdshader" id="1_sjcag"]
+[ext_resource type="Texture2D" uid="uid://c28rbq6555wyv" path="res://assets/textures/t_prototype.png" id="2_417a2"]
+[ext_resource type="Texture2D" uid="uid://542nwul43vig" path="res://assets/textures/n-prototype.png" id="3_hordw"]
+[ext_resource type="Material" uid="uid://c0128dq7one12" path="res://materials/toon.tres" id="4_3neek"]
+[ext_resource type="ArrayMesh" uid="uid://ds35fh58omivt" path="res://assets/meshes/suzanne.res" id="5_j2j3r"]
 
 [sub_resource type="Environment" id="Environment_67ksw"]
 tonemap_mode = 2
@@ -92,8 +92,8 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wu2u6"]
 _data = {
-"RESET": SubResource("Animation_idbgf"),
-"spin": SubResource("Animation_txg38")
+&"RESET": SubResource("Animation_idbgf"),
+&"spin": SubResource("Animation_txg38")
 }
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_witk7"]
@@ -143,11 +143,11 @@ height = 0.1
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ws6qg"]
 render_priority = 0
-shader = ExtResource("1_wr2g8")
+shader = ExtResource("1_sjcag")
+shader_parameter/main_tex = ExtResource("2_417a2")
 shader_parameter/tint = Color(0.501961, 0.501961, 0.501961, 1)
-shader_parameter/main_tex = ExtResource("2_18h4l")
+shader_parameter/normal_tex = ExtResource("3_hordw")
 shader_parameter/normal_strength = 3.0
-shader_parameter/normal_tex = ExtResource("3_i6j6j")
 shader_parameter/tiling = Vector2(1, 1)
 shader_parameter/offset = Vector2(0, 0)
 shader_parameter/shadow_offset = 0.075
@@ -183,7 +183,7 @@ environment = SubResource("Environment_67ksw")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Showcase Lights"]
 libraries = {
-"": SubResource("AnimationLibrary_wu2u6")
+&"": SubResource("AnimationLibrary_wu2u6")
 }
 autoplay = "spin"
 
@@ -237,17 +237,14 @@ mesh = SubResource("PlaneMesh_32vd4")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.5)
 radial_segments = 32
 rings = 16
-material = ExtResource("5_eso08")
+material = ExtResource("4_3neek")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(0.707107, -0.353553, 0.612372, 0, 0.866025, 0.5, -0.707107, -0.353553, 0.612372, 2.56805, 2.95, 2.46805)
 fov = 45.0
 size = 3.479
 
-[node name="suzanne" parent="." instance=ExtResource("4_n0jx7")]
-transform = Transform3D(0.5, -0.224144, 0.836516, 0, 0.965926, 0.258819, -0.866025, -0.12941, 0.482963, 0.0828427, 0.9, 0.582843)
-
-[node name="Suzanne" parent="suzanne" index="0"]
-material_override = ExtResource("5_eso08")
-
-[editable path="suzanne"]
+[node name="Suzanne" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.295475, -0.000240352, 0.403354, 0.000518788, 0.5, -8.20898e-05, -0.403354, 0.000467024, 0.295475, 0, 1.08474, 0.77337)
+mesh = ExtResource("5_j2j3r")
+surface_material_override/0 = ExtResource("4_3neek")

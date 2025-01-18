@@ -11,8 +11,8 @@ config_version=5
 [application]
 
 config/name="Toon Lit Showcase"
-run/main_scene="res://scenes/showcase.tscn"
-config/features=PackedStringArray("4.3", "Forward Plus")
+run/main_scene="res://scenes/toonlit showcase.tscn"
+config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.png"
 
 [file_customization]
