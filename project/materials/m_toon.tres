@@ -2,7 +2,7 @@
 
 [ext_resource type="Shader" uid="uid://1x1llfcaa6wk" path="res://shaders/toonlit.gdshader" id="1_41mss"]
 [ext_resource type="Texture2D" uid="uid://c28rbq6555wyv" path="res://assets/textures/t_prototype.png" id="2_emhlh"]
-[ext_resource type="Texture2D" uid="uid://542nwul43vig" path="res://assets/textures/n-prototype.png" id="3_o67y1"]
+[ext_resource type="Texture2D" uid="uid://542nwul43vig" path="res://assets/textures/n_prototype.png" id="3_o67y1"]
 
 [resource]
 render_priority = 0

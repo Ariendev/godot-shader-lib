@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bsf6neeqhstpb"]
+
+[ext_resource type="Material" uid="uid://cyxypgfs6kjqr" path="res://materials/m_fractalsampling.tres" id="1_06urv"]
+[ext_resource type="ArrayMesh" uid="uid://b7wle0ymjhnf6" path="res://assets/meshes/landscape.res" id="2_ue40b"]
+
+[node name="Showcase" type="Node3D"]
+
+[node name="Landscape" type="MeshInstance3D" parent="."]
+material_override = ExtResource("1_06urv")
+mesh = ExtResource("2_ue40b")

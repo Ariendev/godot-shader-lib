@@ -2,8 +2,8 @@
 
 [ext_resource type="Shader" uid="uid://1x1llfcaa6wk" path="res://shaders/toonlit.gdshader" id="1_sjcag"]
 [ext_resource type="Texture2D" uid="uid://c28rbq6555wyv" path="res://assets/textures/t_prototype.png" id="2_417a2"]
-[ext_resource type="Texture2D" uid="uid://542nwul43vig" path="res://assets/textures/n-prototype.png" id="3_hordw"]
-[ext_resource type="Material" uid="uid://c0128dq7one12" path="res://materials/toon.tres" id="4_3neek"]
+[ext_resource type="Texture2D" uid="uid://542nwul43vig" path="res://assets/textures/n_prototype.png" id="3_hordw"]
+[ext_resource type="Material" uid="uid://c0128dq7one12" path="res://materials/m_toon.tres" id="4_3neek"]
 [ext_resource type="ArrayMesh" uid="uid://ds35fh58omivt" path="res://assets/meshes/suzanne.res" id="5_j2j3r"]
 
 [sub_resource type="Environment" id="Environment_67ksw"]
@@ -247,4 +247,3 @@ size = 3.479
 [node name="Suzanne" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.295475, -0.000240352, 0.403354, 0.000518788, 0.5, -8.20898e-05, -0.403354, 0.000467024, 0.295475, 0, 1.08474, 0.77337)
 mesh = ExtResource("5_j2j3r")
-surface_material_override/0 = ExtResource("4_3neek")

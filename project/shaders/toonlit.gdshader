@@ -58,7 +58,6 @@ void light() {
 		specular = mix(vec3(0.0), specular * specular_strength * LIGHT_COLOR, ndl);
 	}
 	
-	
 	// rim
 	vec3 rim = vec3(0.0);
 	if (rim_enabled) {
